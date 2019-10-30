@@ -6,7 +6,7 @@ class FilterImages extends Component {
         const onFilter = this.props.onFilter;
         const keywordSelect = dom.querySelector('.horn-filter');
         const numberSelect = dom.querySelector('.horn-number-filter');
-
+        
         keywordSelect.addEventListener('input', () => {
             onFilter.keywordFilter(keywordSelect.value);
         });
@@ -21,7 +21,7 @@ class FilterImages extends Component {
                 <section class="dropdown-block">
                     <h2>Select the horned lovely you are seeking</h2>
                     <select class="horn-filter">
-                        <option value="" selected>All The Horns!</option>
+                        <option value="" selected>All The Creatures!!</option>
                         <option value="narwhal">Narwhal</option>
                         <option value="rhino">Rhino</option>
                         <option value="unicorn">Unicorn</option>
@@ -40,7 +40,8 @@ class FilterImages extends Component {
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="100">100</option>
-                    </select> 
+                    </select>
+ 
                 </section>`;
     }       
 }
