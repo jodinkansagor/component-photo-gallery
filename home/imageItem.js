@@ -14,8 +14,7 @@ class ImageItem extends Component {
                     <p class = "title">${image.title}</p>
                     <p>Horns: ${image.horns}</p>
                 </div>
-            </li>
-        `;
+            </li>`;
     }
 }
 
