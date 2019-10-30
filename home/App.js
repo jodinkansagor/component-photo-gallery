@@ -22,21 +22,35 @@ class App extends Component {
 
         const filterImages = new FilterImages({
             images: images,
-            onFilter: (imageKeyword) => {
+            onFilter: {
+                keywordFilter: (imageKeyword) => {
                 
-                let filteredImages;
-                if (!imageKeyword) {
-                    filteredImages = images;
-                } else {
-                    filteredImages = images.filter(image => {
-                        return image.keyword === imageKeyword;
-                    });
-                } 
-                const updateProps = { images: filteredImages };
-                imageList.update(updateProps);
+                    let filteredImages;
+                    if (!imageKeyword) {
+                        filteredImages = images;
+                    } else {
+                        filteredImages = images.filter(image => {
+                            return image.keyword === imageKeyword;
+                        });
+                    } 
+                    const updateProps = { images: filteredImages };
+                    imageList.update(updateProps);
+        
+                },
+                numberFilter: (imageNumber) => {
+                    let filteredImages;
+                    if (!imageNumber) {
+                        filteredImages = images;
+                    } else {
+                        filteredImages = images.filter(image => {
+                            return image.horns >= imageNumber;
+                        });
+                    } 
+                    const updateProps = { images: filteredImages };
+                    imageList.update(updateProps);
+                }
             }
-        });
-
+        });   
         const filterImagesDOM = filterImages.renderDOM();
         const optionsSection = dom.querySelector('.options');
         optionsSection.appendChild(filterImagesDOM);
@@ -50,12 +64,9 @@ class App extends Component {
         return /*html*/`
         <div>
             <main>
-            <section class="dropdown-block">
-                <h2>Select the horned lovely you are seeking</h2>
                 <section class="options">
                 </section>  
-            </section>
-            <section class = "list-section">
+                <section class = "list-section">
                 </section>
             </main>
         </div>

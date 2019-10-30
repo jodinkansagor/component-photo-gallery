@@ -2,16 +2,24 @@ import Component from '../Component.js';
 
 class FilterImages extends Component {
 
-    onRender(select) {
+    onRender(dom) {
         const onFilter = this.props.onFilter;
+        const keywordSelect = dom.querySelector('.horn-filter');
+        const numberSelect = dom.querySelector('.horn-number-filter');
 
-        select.addEventListener('input', () => {
-            onFilter(select.value);
+        keywordSelect.addEventListener('input', () => {
+            onFilter.keywordFilter(keywordSelect.value);
+        });
+
+        numberSelect.addEventListener('input', () => {
+            onFilter.numberFilter(numberSelect.value);
         });
     }
 
     renderHTML() {
         return /*html*/`
+                <section class="dropdown-block">
+                    <h2>Select the horned lovely you are seeking</h2>
                     <select class="horn-filter">
                         <option value="" selected>All The Horns!</option>
                         <option value="narwhal">Narwhal</option>
@@ -25,16 +33,16 @@ class FilterImages extends Component {
                         <option value="chameleon">Chameleon</option>
                         <option value="lizard">Lizard</option>
                         <option value="dragon">Dragon</option>
-                    </select> `;
-    }
+                    </select> 
+                    <select class="horn-number-filter">
+                        <option value="0" selected>All The Horns!</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="100">100</option>
+                    </select> 
+                </section>`;
+    }       
 }
 
 export default FilterImages;
-
-
-// <section class="dropdown-block">
-// <h2>Select the horned lovely you are seeking</h2>
-// <section class="options">
-
-//                 </section>
-//             </section>

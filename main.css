@@ -55,6 +55,11 @@ h2 {
     margin-left: 10px;
 }
 
+.horn-number-filter {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
 ul {
     margin: 50px;
     display: flex;
