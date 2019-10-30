@@ -6,6 +6,7 @@ class ImageList extends Component {
     renderHTML() {
         return /*html*/`
             <ul class = 'horn-list'>
+            </ul>
         `;
     }
     
