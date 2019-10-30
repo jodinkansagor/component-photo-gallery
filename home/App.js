@@ -3,6 +3,7 @@ import ImageList from './ImageList.js';
 import Header from '../home/Header.js';
 import images from '../data/images.js';
 import Footer from './Footer..js';
+import FilterImages from './FilterImages.js';
 // import FilterImages from '../home/FilterImages.js';
 
 class App extends Component {
@@ -15,18 +16,37 @@ class App extends Component {
             images: images
         };
 
+
+
         const imageList = new ImageList(props);
         const imageListDOM = imageList.renderDOM();
         const listSection = dom.querySelector('.list-section');
         listSection.appendChild(imageListDOM);
 
+        const filterImages = new FilterImages({
+            images: images,
+            onFilter: (imageKeyword) => {
+                let filteredImages;
+                if (!imageKeyword) {
+                    filteredImages = images;
+                } else {
+                    filteredImages = images.filter(image => {
+                        return image.keyword === imageKeyword;
+                    });
+                } 
+                const updateProps = { images: filteredImages };
+                imageList.update(updateProps);
+            }
+        });
+
+        const filterImagesDOM = filterImages.renderDOM();
+        const optionsSection = dom.querySelector('.options');
+        optionsSection.appendChild(filterImagesDOM);
+
         const footer = new Footer;
         const footerDom = footer.renderDOM();
         dom.appendChild(footerDom);
-        
     }
-
-   
 
     renderHTML() {
         return /*html*/`
