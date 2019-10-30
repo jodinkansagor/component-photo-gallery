@@ -4,7 +4,6 @@ import Header from '../home/Header.js';
 import images from '../data/images.js';
 import Footer from './Footer..js';
 import FilterImages from './FilterImages.js';
-// import FilterImages from '../home/FilterImages.js';
 
 class App extends Component {
     onRender(dom) {
@@ -16,8 +15,6 @@ class App extends Component {
             images: images
         };
 
-
-
         const imageList = new ImageList(props);
         const imageListDOM = imageList.renderDOM();
         const listSection = dom.querySelector('.list-section');
@@ -26,6 +23,7 @@ class App extends Component {
         const filterImages = new FilterImages({
             images: images,
             onFilter: (imageKeyword) => {
+                
                 let filteredImages;
                 if (!imageKeyword) {
                     filteredImages = images;
@@ -52,8 +50,11 @@ class App extends Component {
         return /*html*/`
         <div>
             <main>
+            <section class="dropdown-block">
+                <h2>Select the horned lovely you are seeking</h2>
                 <section class="options">
                 </section>  
+            </section>
             <section class = "list-section">
                 </section>
             </main>

@@ -2,11 +2,16 @@ import Component from '../Component.js';
 
 class FilterImages extends Component {
 
+    onRender(select) {
+        const onFilter = this.props.onFilter;
+
+        select.addEventListener('input', () => {
+            onFilter(select.value);
+        });
+    }
+
     renderHTML() {
         return /*html*/`
-            <section class="dropdown-block">
-                <h2>Select the horned lovely you are seeking</h2>
-                <section class="options">
                     <select class="horn-filter">
                         <option value="" selected>All The Horns!</option>
                         <option value="narwhal">Narwhal</option>
@@ -20,10 +25,16 @@ class FilterImages extends Component {
                         <option value="chameleon">Chameleon</option>
                         <option value="lizard">Lizard</option>
                         <option value="dragon">Dragon</option>
-                    </select>
-                </section>
-            </section>`;
+                    </select> `;
     }
 }
 
 export default FilterImages;
+
+
+// <section class="dropdown-block">
+// <h2>Select the horned lovely you are seeking</h2>
+// <section class="options">
+
+//                 </section>
+//             </section>
